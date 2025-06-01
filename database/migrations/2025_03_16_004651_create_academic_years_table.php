@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->date('start_date');
             $table->date('end_date');
+            $table->foreignId('center_id')
+                ->nullable()
+                ->constrained('centers')
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('users')

@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        # Ej: "Preescolar", "Primaria", "Secundaria", "Bachillerato"
         Schema::create('academic_levels', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->foreignId('center_id')
+                ->nullable()
+                ->constrained('centers')
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

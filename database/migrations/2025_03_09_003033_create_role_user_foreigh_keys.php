@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('created_by')
                 ->nullable()
                 ->constrained('users')
-                ->nullOnDelete();
+                ->nullOnDelete()->cascadeOnUpdate();
         });
 
         // Agregar la columna role_id a users
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('role_id')
                 ->nullable()
                 ->constrained('roles')
-                ->nullOnDelete();
+                ->nullOnDelete()->cascadeOnUpdate();
         });
     }
 

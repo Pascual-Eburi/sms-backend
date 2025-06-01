@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->foreignId('center_id')
+                ->nullable()
+                ->constrained('centers')
+                ->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

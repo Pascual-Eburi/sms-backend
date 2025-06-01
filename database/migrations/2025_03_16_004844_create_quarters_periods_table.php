@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('quarters_periods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('academic_year_id');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->foreignId('center_id')
+                ->nullable()
+                ->constrained('centers')
+                ->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

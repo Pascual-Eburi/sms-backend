@@ -11,9 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quarters', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->foreignId('academic_level_id')
+                ->nullable()
+                ->constrained('academic_levels')
+                ->nullOnDelete();
+            $table->foreignId('academic_stage_id')
+                ->nullable()
+                ->constrained('academic_stages')
+                ->nullOnDelete();
+            $table->foreignId('created_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
             $table->foreignId('center_id')
                 ->nullable()
                 ->constrained('centers')
@@ -27,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quarters');
+        Schema::dropIfExists('courses');
     }
 };
