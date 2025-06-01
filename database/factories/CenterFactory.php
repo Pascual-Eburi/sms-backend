@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Center;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Center>
  */
 class CenterFactory extends Factory
 {
